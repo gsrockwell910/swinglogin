@@ -1,8 +1,6 @@
 package com.loginform;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
 import java.awt.*;
 
 public class MainFrame
@@ -24,16 +22,28 @@ public class MainFrame
         frame = new JFrame();
         frame.setTitle("Login Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 500);
-        frame.setLayout(new BorderLayout(10, 10));
+        frame.setSize(1000, 500);
+        frame.setLayout(new BorderLayout(0, 0));
         frame.setLocationRelativeTo(null);
 
         //set up main panel to add all components to later
         panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.setLayout(new GridLayout(1, 2));
         panel.setBackground(Color.GRAY);
 
+
+        //set up panel for left side
+        logoPanel = new JPanel(new BorderLayout());
+        logoPanel.setBackground(Color.DARK_GRAY);
+
+        //set up panel for right
+        formPanel = new JPanel(new BorderLayout());
+        formPanel.setBackground(Color.ORANGE);
+
         //add panel to frame
+        panel.add(logoPanel);
+        panel.add(formPanel);
+
         frame.add(panel, BorderLayout.CENTER);
     }
 
