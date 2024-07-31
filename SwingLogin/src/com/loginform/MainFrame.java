@@ -31,10 +31,16 @@ public class MainFrame
         panel.setLayout(new GridLayout(1, 2));
         panel.setBackground(Color.GRAY);
 
+        //set up components to add to logoPanel
+        companyName = new JLabel("Rockwell Software");
+        icon = new ImageIcon("src/com/images/alien_outline.png");
+
+        companyName.setIcon(icon);
 
         //set up panel for left side
         logoPanel = new JPanel(new BorderLayout());
         logoPanel.setBackground(Color.DARK_GRAY);
+        logoPanel.add(companyName);
 
         //set up panel for right
         formPanel = new JPanel(new BorderLayout());
