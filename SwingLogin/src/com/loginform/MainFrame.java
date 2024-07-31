@@ -71,13 +71,12 @@ public class MainFrame
 
         //set up fields
         textField = new JTextField(10);
-        textField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        textField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE));
         textField.setBackground(new Color(186, 79, 84));
-        textField.setMargin(new Insets(0, 0, 0, 0));
         textField.setForeground(Color.WHITE);
 
         passwordField = new JPasswordField(10);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE));
         passwordField.setBackground(new Color(186, 79, 84));
         passwordField.setForeground(Color.WHITE);
 
