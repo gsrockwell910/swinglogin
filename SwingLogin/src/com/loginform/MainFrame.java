@@ -125,7 +125,7 @@ public class MainFrame
         //set up panel for right
         formPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbcForm = new GridBagConstraints();
-        gbcForm.insets = new Insets(10, 10, 10, 10);
+        gbcForm.insets = new Insets(15, 0, 10, 0);
 
         // Use GridBagLayout to align text and password fields with their labels
         gbcForm.gridx = 0;
@@ -157,7 +157,7 @@ public class MainFrame
         loginButton = new JButton("Login");
         loginButton.setFocusable(false);
         loginButton.setToolTipText("Login to Rockwell Software portal");
-        loginButton.setPreferredSize(new Dimension(100, 30));
+        loginButton.setPreferredSize(new Dimension(145, 40));
 
         loginButton.setBackground(PRIMARY);
         loginButton.setForeground(Color.WHITE);
@@ -168,7 +168,7 @@ public class MainFrame
         resetButton.setFocusable(false);
         resetButton.setToolTipText("Reset this form");
 
-        resetButton.setPreferredSize(new Dimension(100, 30));
+        resetButton.setPreferredSize(new Dimension(145, 40));
 
         resetButton.setBackground(PRIMARY);
         resetButton.setForeground(Color.WHITE);
@@ -177,7 +177,7 @@ public class MainFrame
 
         // Use GridBagConstraints to position buttons with padding
         GridBagConstraints gbcButton = new GridBagConstraints();
-        gbcButton.insets = new Insets(10, 33, 0, 30); // Add right padding to each button
+        gbcButton.insets = new Insets(10, 15, 0, 35); // Add right padding to each button
         gbcButton.fill = GridBagConstraints.NONE;
         gbcButton.anchor = GridBagConstraints.CENTER;
 
@@ -233,7 +233,7 @@ public class MainFrame
 
         // Add the "Forgot Password?" label below the buttonPanel
         gbcForm.gridy = 3; // Position "Forgot Password?" label below the buttonPanel
-        gbcForm.insets = new Insets(25, 170, 10, 10); // Adjust padding as needed
+        gbcForm.insets = new Insets(25, 190, 10, 10); // Adjust padding as needed
         formPanel.add(forgotPasswordLabel, gbcForm);
 
         formPanel.setBackground(PRIMARY);
