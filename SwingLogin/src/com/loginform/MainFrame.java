@@ -10,7 +10,7 @@ public class MainFrame
     private JPanel panel;
     private JPanel logoPanel;
     private JPanel formPanel;
-    private JPanel formPanelWrapper;
+    private JPanel buttonPanel;
 
     private JLabel companyName;
     private JLabel textFieldLabel;
@@ -21,6 +21,7 @@ public class MainFrame
     private ImageIcon passwordFieldIcon;
 
     private Font font;
+    private Font textFieldFont;
 
     private JTextField textField;
     private JPasswordField passwordField;
@@ -43,12 +44,15 @@ public class MainFrame
         frame.setLocationRelativeTo(null);
 
         //set up main panel to add all components to later
-        panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 2));
+        panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
 
         //set up components to add to logoPanel
         companyName = new JLabel("Rockwell Software");
-        companyName.setForeground(Color.WHITE);
+        companyName.setForeground(Color.BLACK);
 
         //Icon set up
         icon = new ImageIcon("src/com/images/alien_outline.png");
@@ -65,18 +69,31 @@ public class MainFrame
         companyName.setVerticalAlignment(SwingConstants.CENTER);
 
         //set up panel for left side
-        logoPanel = new JPanel(new BorderLayout());
+        logoPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcLogo = new GridBagConstraints();
+        gbcLogo.insets = new Insets(10, 10, 10, 10); // Padding
+
+        gbcLogo.gridx = 0;
+        gbcLogo.gridy = 0;
+        gbcLogo.anchor = GridBagConstraints.CENTER;
+        logoPanel.add(companyName, gbcLogo);
+
         logoPanel.setBackground(new Color(74, 31, 61));
-        logoPanel.add(companyName);
 
         //set up fields
-        textField = new JTextField(10);
-        textField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE));
+        textField = new JTextField(15);
+
+        textFieldFont = new Font("Arial", Font.PLAIN, 20);
+        textField.setFont(textFieldFont);
+
+        textField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
         textField.setBackground(new Color(186, 79, 84));
         textField.setForeground(Color.WHITE);
 
-        passwordField = new JPasswordField(10);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE));
+        passwordField = new JPasswordField(15);
+        passwordField.setFont(textFieldFont);
+
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
         passwordField.setBackground(new Color(186, 79, 84));
         passwordField.setForeground(Color.WHITE);
 
@@ -84,51 +101,110 @@ public class MainFrame
         textFieldIcon = new ImageIcon("src/com/images/person_16.png");
 
         //set up text field label
-        textFieldLabel = new JLabel(" ");
+        textFieldLabel = new JLabel();
         textFieldLabel.setIcon(textFieldIcon);
-        textFieldLabel.setIconTextGap(150);
-
-        //remove later if not needed
-        textFieldLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-        textFieldLabel.setVerticalTextPosition(SwingConstants.CENTER);
-        textFieldLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        textFieldLabel.setVerticalAlignment(SwingConstants.CENTER);
+        textFieldLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         //set up password field logo
         passwordFieldIcon = new ImageIcon("src/com/images/lock_16.png");
 
         //set up password field label
-        passwordFieldLabel = new JLabel(" ");
+        passwordFieldLabel = new JLabel();
         passwordFieldLabel.setIcon(passwordFieldIcon);
-        passwordFieldLabel.setIconTextGap(150);
-
-        //remove later in not needed
-        passwordFieldLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-        passwordFieldLabel.setVerticalTextPosition(SwingConstants.CENTER);
-        passwordFieldLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        passwordFieldLabel.setVerticalAlignment(SwingConstants.CENTER);
+        passwordFieldLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         //set up panel for right
-        formPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 150));
-        formPanelWrapper = new JPanel(new GridLayout(2, 4));
+        formPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcForm = new GridBagConstraints();
+        gbcForm.insets = new Insets(10, 10, 10, 10);
+
+        // Use GridBagLayout to align text and password fields with their labels
+        gbcForm.gridx = 0;
+        gbcForm.gridy = 0;
+        gbcForm.anchor = GridBagConstraints.LINE_END;
+        formPanel.add(textFieldLabel, gbcForm);
+
+        gbcForm.gridx = 1;
+        gbcForm.gridy = 0;
+        gbcForm.fill = GridBagConstraints.HORIZONTAL;
+        formPanel.add(textField, gbcForm);
+
+        gbcForm.gridx = 0;
+        gbcForm.gridy = 1;
+        gbcForm.anchor = GridBagConstraints.LINE_END;
+        formPanel.add(passwordFieldLabel, gbcForm);
+
+        gbcForm.gridx = 1;
+        gbcForm.gridy = 1;
+        gbcForm.fill = GridBagConstraints.HORIZONTAL;
+        formPanel.add(passwordField, gbcForm);
+
+        //set up buttons
+        //create button panel and button
+        buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(186, 79, 84));
+
+        loginButton = new JButton("Login");
+        loginButton.setFocusable(false);
+        loginButton.setToolTipText("Login to Rockwell Software portal");
+
+        loginButton.setPreferredSize(new Dimension(100, 30));
+
+        loginButton.setBackground(new Color(186, 79, 84));
+        loginButton.setForeground(Color.WHITE);
+
+        loginButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+
+        resetButton = new JButton("Reset");
+        resetButton.setFocusable(false);
+        resetButton.setToolTipText("Reset this form");
+
+        resetButton.setPreferredSize(new Dimension(100, 30));
+
+        resetButton.setBackground(new Color(186, 79, 84));
+        resetButton.setForeground(Color.WHITE);
+
+        resetButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+
+        buttonPanel.add(loginButton);
+        buttonPanel.add(resetButton);
+
+        // Add action listeners to buttons
+        loginButton.addActionListener(e -> {
+            // TODO: Handle login action here
+            System.out.println("Login button clicked");
+        });
+
+        resetButton.addActionListener(e -> {
+            // TODO: Handle reset action here
+            System.out.println("Reset button clicked");
+        });
+
+        // Add buttonPanel to formPanel below the password field
+        gbcForm.gridx = 0;
+        gbcForm.gridy = 2; // Position button panel below the password field
+        gbcForm.gridwidth = 2; // Span both columns
+        gbcForm.fill = GridBagConstraints.HORIZONTAL; // Make the buttonPanel fill horizontally
+
+        // Add left padding to move the buttonPanel to the right
+        gbcForm.insets = new Insets(10, 70, 10, 10);
+
+        formPanel.add(buttonPanel, gbcForm);
+
         formPanel.setBackground(new Color(186, 79, 84));
-        formPanelWrapper.setBackground(new Color(186, 79, 84));
 
+        // Add both panels to the mainPanel with equal weight
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        panel.add(logoPanel, gbc);
 
-        //add text field components
-        formPanelWrapper.add(textFieldLabel);
-        formPanelWrapper.add(textField);
-
-        //add password
-        formPanelWrapper.add(passwordFieldLabel);
-        formPanelWrapper.add(passwordField);
-
-        //add wrapper
-        formPanel.add(formPanelWrapper);
-
-        //add panel to frame
-        panel.add(logoPanel);
-        panel.add(formPanel);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        panel.add(formPanel, gbc);
 
         frame.add(panel, BorderLayout.CENTER);
     }
