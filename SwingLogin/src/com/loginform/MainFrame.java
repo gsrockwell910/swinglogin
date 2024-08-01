@@ -29,6 +29,9 @@ public class MainFrame
     private JButton loginButton;
     private JButton resetButton;
 
+    private final Color PRIMARY = Color.DARK_GRAY;
+    private final Color SECONDARY = Color.CYAN;
+
     public MainFrame()
     {
         initialize();
@@ -39,7 +42,7 @@ public class MainFrame
         frame = new JFrame();
         frame.setTitle("Login Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1000, 500);
+        frame.setSize(950, 500);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
 
@@ -78,23 +81,23 @@ public class MainFrame
         gbcLogo.anchor = GridBagConstraints.CENTER;
         logoPanel.add(companyName, gbcLogo);
 
-        logoPanel.setBackground(new Color(74, 31, 61));
+        logoPanel.setBackground(SECONDARY);
 
         //set up fields
-        textField = new JTextField(15);
-
         textFieldFont = new Font("Arial", Font.PLAIN, 20);
+
+        textField = new JTextField(15);
         textField.setFont(textFieldFont);
 
         textField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
-        textField.setBackground(new Color(186, 79, 84));
+        textField.setBackground(PRIMARY);
         textField.setForeground(Color.WHITE);
 
         passwordField = new JPasswordField(15);
         passwordField.setFont(textFieldFont);
 
         passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
-        passwordField.setBackground(new Color(186, 79, 84));
+        passwordField.setBackground(PRIMARY);
         passwordField.setForeground(Color.WHITE);
 
         //set up text field logo
@@ -142,7 +145,7 @@ public class MainFrame
         //set up buttons
         //create button panel and button
         buttonPanel = new JPanel();
-        buttonPanel.setBackground(new Color(186, 79, 84));
+        buttonPanel.setBackground(PRIMARY);
 
         loginButton = new JButton("Login");
         loginButton.setFocusable(false);
@@ -150,7 +153,7 @@ public class MainFrame
 
         loginButton.setPreferredSize(new Dimension(100, 30));
 
-        loginButton.setBackground(new Color(186, 79, 84));
+        loginButton.setBackground(PRIMARY);
         loginButton.setForeground(Color.WHITE);
 
         loginButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
@@ -161,7 +164,7 @@ public class MainFrame
 
         resetButton.setPreferredSize(new Dimension(100, 30));
 
-        resetButton.setBackground(new Color(186, 79, 84));
+        resetButton.setBackground(PRIMARY);
         resetButton.setForeground(Color.WHITE);
 
         resetButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
@@ -191,7 +194,7 @@ public class MainFrame
 
         formPanel.add(buttonPanel, gbcForm);
 
-        formPanel.setBackground(new Color(186, 79, 84));
+        formPanel.setBackground(PRIMARY);
 
         // Add both panels to the mainPanel with equal weight
         gbc.gridx = 0;
