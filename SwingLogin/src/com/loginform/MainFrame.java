@@ -86,21 +86,23 @@ public class MainFrame
         //TODO: make textFieldGenerator() to clean code up
         textFieldFont = new Font("Arial", Font.PLAIN, 20);
 
-        textField = new JTextField(15);
+        textField = new JTextField(10);
         textField.setFont(textFieldFont);
 
         textField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
         textField.setBackground(PRIMARY);
         textField.setForeground(Color.WHITE);
+        textField.setCaretColor(Color.WHITE);
 
-        passwordFieldFont = new Font("Arial", Font.PLAIN, 30);
+        passwordFieldFont = new Font("Arial", Font.PLAIN, 25);
 
-        passwordField = new JPasswordField(15);
+        passwordField = new JPasswordField(10);
         passwordField.setFont(passwordFieldFont);
 
         passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
         passwordField.setBackground(PRIMARY);
         passwordField.setForeground(Color.WHITE);
+        passwordField.setCaretColor(Color.WHITE);
 
         //set up text field logo
         textFieldIcon = new ImageIcon("src/com/images/person_16.png");
