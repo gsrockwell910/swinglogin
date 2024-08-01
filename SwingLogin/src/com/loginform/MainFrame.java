@@ -50,8 +50,6 @@ public class MainFrame
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
 
         //set up components to add to logoPanel
         companyName = new JLabel("Rockwell Software");
@@ -84,6 +82,7 @@ public class MainFrame
         logoPanel.setBackground(SECONDARY);
 
         //set up fields
+        //TODO: make textFieldGenerator() to clean code up
         textFieldFont = new Font("Arial", Font.PLAIN, 20);
 
         textField = new JTextField(15);
@@ -144,6 +143,7 @@ public class MainFrame
 
         //set up buttons
         //create button panel and button
+        //TODO: make buttonGenerator() to clean code up
         buttonPanel = new JPanel();
         buttonPanel.setBackground(PRIMARY);
 
