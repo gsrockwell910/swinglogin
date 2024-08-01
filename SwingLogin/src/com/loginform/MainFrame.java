@@ -15,6 +15,7 @@ public class MainFrame
     private JLabel companyName;
     private JLabel textFieldLabel;
     private JLabel passwordFieldLabel;
+    private JLabel forgotPasswordLabel;
 
     private ImageIcon icon;
     private ImageIcon textFieldIcon;
@@ -23,6 +24,7 @@ public class MainFrame
     private Font font;
     private Font textFieldFont;
     private Font passwordFieldFont;
+    private Font forgotPasswordFont;
 
     private JTextField textField;
     private JPasswordField passwordField;
@@ -86,7 +88,7 @@ public class MainFrame
         //TODO: make textFieldGenerator() to clean code up
         textFieldFont = new Font("Arial", Font.PLAIN, 20);
 
-        textField = new JTextField(10);
+        textField = new JTextField(15);
         textField.setFont(textFieldFont);
 
         textField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
@@ -96,7 +98,7 @@ public class MainFrame
 
         passwordFieldFont = new Font("Arial", Font.PLAIN, 25);
 
-        passwordField = new JPasswordField(10);
+        passwordField = new JPasswordField(15);
         passwordField.setFont(passwordFieldFont);
 
         passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
@@ -149,13 +151,12 @@ public class MainFrame
         //set up buttons
         //create button panel and button
         //TODO: make buttonGenerator() to clean code up
-        buttonPanel = new JPanel();
+        buttonPanel = new JPanel(new GridBagLayout());
         buttonPanel.setBackground(PRIMARY);
 
         loginButton = new JButton("Login");
         loginButton.setFocusable(false);
         loginButton.setToolTipText("Login to Rockwell Software portal");
-
         loginButton.setPreferredSize(new Dimension(100, 30));
 
         loginButton.setBackground(PRIMARY);
@@ -174,8 +175,39 @@ public class MainFrame
 
         resetButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 
-        buttonPanel.add(loginButton);
-        buttonPanel.add(resetButton);
+        // Use GridBagConstraints to position buttons with padding
+        GridBagConstraints gbcButton = new GridBagConstraints();
+        gbcButton.insets = new Insets(10, 33, 0, 30); // Add right padding to each button
+        gbcButton.fill = GridBagConstraints.NONE;
+        gbcButton.anchor = GridBagConstraints.CENTER;
+
+        // Add loginButton with padding
+        gbcButton.gridx = 0;
+        gbcButton.gridy = 0;
+        buttonPanel.add(loginButton, gbcButton);
+
+        // Add resetButton with padding
+        gbcButton.gridx = 1;
+        gbcButton.gridy = 0;
+        buttonPanel.add(resetButton, gbcButton);
+
+        forgotPasswordLabel = new JLabel("Forgot Password?");
+        forgotPasswordFont = new Font("Arial", Font.PLAIN, 15);
+        forgotPasswordLabel.setFont(forgotPasswordFont);
+        forgotPasswordLabel.setForeground(Color.WHITE);
+        forgotPasswordLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+
+        //add mouse listener to forgot password label
+        forgotPasswordLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                //TODO: Handle forgot password action
+                System.out.println("Forgot Password? clicked");
+            }
+        });
 
         // Add action listeners to buttons
         loginButton.addActionListener(e -> {
@@ -198,6 +230,11 @@ public class MainFrame
         gbcForm.insets = new Insets(10, 70, 10, 10);
 
         formPanel.add(buttonPanel, gbcForm);
+
+        // Add the "Forgot Password?" label below the buttonPanel
+        gbcForm.gridy = 3; // Position "Forgot Password?" label below the buttonPanel
+        gbcForm.insets = new Insets(25, 170, 10, 10); // Adjust padding as needed
+        formPanel.add(forgotPasswordLabel, gbcForm);
 
         formPanel.setBackground(PRIMARY);
 
