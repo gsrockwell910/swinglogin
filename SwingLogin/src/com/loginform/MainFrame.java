@@ -22,6 +22,7 @@ public class MainFrame
 
     private Font font;
     private Font textFieldFont;
+    private Font passwordFieldFont;
 
     private JTextField textField;
     private JPasswordField passwordField;
@@ -92,8 +93,10 @@ public class MainFrame
         textField.setBackground(PRIMARY);
         textField.setForeground(Color.WHITE);
 
+        passwordFieldFont = new Font("Arial", Font.PLAIN, 30);
+
         passwordField = new JPasswordField(15);
-        passwordField.setFont(textFieldFont);
+        passwordField.setFont(passwordFieldFont);
 
         passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
         passwordField.setBackground(PRIMARY);
